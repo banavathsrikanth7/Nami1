@@ -1,35 +1,72 @@
-import React, { useState, useRef, useEffect } from "react";
-import videoFile from "./Your_reference_video_202508141039.mp4"; // Put video in src/
-import HomePage from "./components/HomePage"; // Adjust path if needed
+import { useState, useEffect, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Components
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+// Pages
+import HomePage from "./pages/HomePage";
+import History from "./pages/History";
+import LoginSignup from "./pages/LoginSignup";
 
 function App() {
   const [showHome, setShowHome] = useState(false);
   const videoRef = useRef(null);
 
+  // check if intro already seen in THIS reload
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.5; // Speed: 1 = normal, 1.5 = 50% faster
+    const seenIntro = sessionStorage.getItem("seenIntro"); // ✅ sessionStorage resets only on reload
+    if (seenIntro) {
+      setShowHome(true);
     }
   }, []);
 
+  // set playback rate after video mounts
+  useEffect(() => {
+    if (!showHome && videoRef.current) {
+      videoRef.current.playbackRate = 1.5;
+    }
+  }, [showHome]);
+
   const handleVideoEnd = () => {
     setShowHome(true);
+    sessionStorage.setItem("seenIntro", "true"); // ✅ only skip within same reload
   };
 
   return (
-    <div className="w-screen h-screen overflow-hidden">
+    <div className="w-screen h-screen">
       {!showHome ? (
+        // ⏯️ Intro Video
         <video
           ref={videoRef}
+          id="intro-video"
           className="w-full h-full object-cover"
-          src={videoFile}
+          src="/Your_reference_video_202508141039.mp4"  // ✅ place your video in `public/intro.mp4`
           autoPlay
           muted
+          playsInline
           onEnded={handleVideoEnd}
         />
       ) : (
-        <div className="fade-in">
-          <HomePage />
+        // 🌐 Main App with Router
+        <div className="fade-in min-h-screen flex flex-col">
+          <Router
+            future={{
+              v7_relativeSplatPath: true,
+              v7_startTransition: true,
+            }}
+          >
+            <Navbar />
+            <div className="flex-grow pt-20 px-4">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/history" element={<History />} />
+                <Route path="/login" element={<LoginSignup />} />
+              </Routes>
+            </div>
+            <Footer />
+          </Router>
         </div>
       )}
     </div>
@@ -37,6 +74,3 @@ function App() {
 }
 
 export default App;
-
-
-
