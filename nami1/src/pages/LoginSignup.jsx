@@ -4,13 +4,13 @@ export default function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-white">
-      <div className="bg-blue-400 backdrop-blur-md p-8 rounded-xl w-full max-w-md">
+    <div className="min-h-screen -ml-4 -mr-4 -mb-10  flex items-center justify-center bg-gray-200 text-black">
+      <div className=" animate-gradient1  transition-all duration-1000 backdrop-blur-md p-8 rounded-xl width-full  min-h-[450px] max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center">
           {isLogin ? "Login" : "Sign Up"}
         </h1>
 
-        <form className="space-y-4">
+        <form className="space-y-10">
           {!isLogin && (
             <input
               type="text"
@@ -30,17 +30,17 @@ export default function LoginSignup() {
           />
           <button
             type="submit"
-            className="w-full bg-blue-800 text-black font-bold py-3 rounded-lg hover:bg-green-400 transition"
+            className="w-full bg-#06beb6 text-black font-bold py-3 rounded-lg hover:bg-#48b1bf transition"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center mt-6 text-gray-300">
+        <p className="text-center mt-6 text-black">
           {isLogin ? "Don’t have an account?" : "Already have an account?"}{" "}
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className="text-green-400 hover:underline"
+            className="text-blue-600 hover:underline"
           >
             {isLogin ? "Sign Up" : "Login"}
           </button>

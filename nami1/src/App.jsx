@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -65,7 +65,7 @@ function App() {
                 <Route path="/login" element={<LoginSignup />} />
               </Routes>
             </div>
-            <Footer />
+           
           </Router>
         </div>
       )}
