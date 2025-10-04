@@ -10,9 +10,10 @@ export default function History() {
   }, []);
 
   return (
+    <div className ="bg-gray-300 -ml-6 -mr-4">
     <div className="min-h-screen p-6 text-white space-y-6">
-      <h1 className="text-3xl font-bold">Chat History</h1>
-      <p className="text-gray-300">
+      <h1 className="text-3xl text-black font-bold">Chat History</h1>
+      <p className="text-black">
         Here you’ll be able to view your past conversations with Nami.
       </p>
 
@@ -30,6 +31,7 @@ export default function History() {
           ))
         )}
       </div>
+    </div>
     </div>
   );
 }

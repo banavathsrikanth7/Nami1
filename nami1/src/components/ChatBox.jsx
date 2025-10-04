@@ -12,13 +12,13 @@ export default function ChatBox({ messages }) {
   return (
 <div
   ref={chatRef}
-  className=" w-full p-4 bg-black/40 rounded-2xl shadow-lg space-y-3"
+  className=" w-full -mr-10 p-4 bg-black/40 rounded-2xl shadow-lg space-y-3"
 >
 
       {messages.map((msg, i) => (
         <div
           key={i}
-          className={`p-3 rounded-lg max-w-xs ${
+          className={`p-3   rounded-lg max-w-xs ${
             msg.startsWith("User:")
               ? "bg-green-400 text-black ml-auto"
               :  "bg-black/50 text-white"

@@ -6,7 +6,7 @@ export default function LoginSignup() {
   return (
     <div className="min-h-screen -ml-4 -mr-4 -mb-10  flex items-center justify-center bg-gray-200 text-black">
       <div className=" animate-gradient1  transition-all duration-1000 backdrop-blur-md p-8 rounded-xl width-full  min-h-[450px] max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1  className="text-2xl font-bold mb-6 text-center">
           {isLogin ? "Login" : "Sign Up"}
         </h1>
 
@@ -30,7 +30,7 @@ export default function LoginSignup() {
           />
           <button
             type="submit"
-            className="w-full bg-#06beb6 text-black font-bold py-3 rounded-lg hover:bg-#48b1bf transition"
+            className="w-full bg-#06beb6 text-black font-bold py-3 rounded-lg hover:bg-#48b1bf transition border border-gray-900 hover:border-black"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>
