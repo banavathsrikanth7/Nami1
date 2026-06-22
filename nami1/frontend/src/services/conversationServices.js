@@ -5,10 +5,10 @@ async () => {
 
   const token =
     await auth.currentUser.getIdToken();
-
+const API_URL = import.meta.env.VITE_API_URL;
   const response =
     await fetch(
-      "http://127.0.0.1:8000/conversation/create",
+      `${API_URL}/conversation/create`,
       {
         method: "POST",
 

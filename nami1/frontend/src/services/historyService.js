@@ -29,10 +29,10 @@ export const getMyChats = async () => {
 
   const token =
     await user.getIdToken();
-
+const API_URL = import.meta.env.VITE_API_URL;
   const response =
     await fetch(
-      "http://127.0.0.1:8000/conversation/my-chats",
+      `${API_URL}/conversation/my-chats`,
       {
         headers: {
           Authorization:
