@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signUp, login, loginWithGoogle } from "../services/authService"; // check path
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL; 
 export default function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
@@ -10,6 +11,7 @@ export default function LoginSignup() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsClicked(true);
@@ -29,7 +31,7 @@ const navigate = useNavigate();
 
   const response =
     await fetch(
-      "http://127.0.0.1:8000/auth/sync-user",
+      `${API_URL}/auth/sync-user`,
       {
         method: "POST",
         headers: {
@@ -55,7 +57,7 @@ const token =
   await result.user.getIdToken();
 
 await fetch(
-  "http://127.0.0.1:8000/auth/sync-user",
+  `${API_URL}/auth/sync-user`,
   {
     method: "POST",
     headers: {
@@ -85,7 +87,7 @@ navigate("/");
 
     const response =
       await fetch(
-        "http://127.0.0.1:8000/auth/sync-user",
+        `${API_URL}/auth/sync-user`,
         {
           method: "POST",
           headers: {
