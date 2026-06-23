@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import History from "./pages/History";
 import LoginSignup from "./pages/LoginSignup";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [showHome, setShowHome] = useState(false);
@@ -55,9 +56,10 @@ function App() {
             <Navbar />
             <div className="flex-grow pt-20 px-4">
               <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/history" element={<History />} />
                 <Route path="/login" element={<LoginSignup />} />
+                <Route path="/" element= {<ProtectedRoute><HomePage /> </ProtectedRoute>} />
+                <Route path="/history" element={<ProtectedRoute><History /> </ProtectedRoute>} />
+                
               </Routes>
             </div>
            

@@ -27,8 +27,12 @@ export const getMyChats = async () => {
 
   }
 
-  const token =
-    await user.getIdToken();
+ if (!auth.currentUser) {
+  throw new Error("User not logged in");
+}
+
+const token =
+await auth.currentUser.getIdToken();
 const API_URL = import.meta.env.VITE_API_URL;
   const response =
     await fetch(

@@ -3,6 +3,8 @@ import ChatBox from "../components/ChatBox";
 import Loader from "../components/Loader";
 import {createConversation} from "../services/conversationServices";
 import {sendMessage} from"../services/messageServices";
+import { auth } from "../services/firebase";
+import { useNavigate } from "react-router-dom";
 export default function HomePage() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,6 +15,13 @@ export default function HomePage() {
   const [conversationId,setConversationId]= useState(null);
   const chatEndRef = useRef(null);
 
+  const navigate = useNavigate();
+
+useEffect(() => {
+  if (!auth.currentUser) {
+    navigate("/login");
+  }
+}, []);
 
   // Simulate chat loading + new messages
   useEffect(() => {

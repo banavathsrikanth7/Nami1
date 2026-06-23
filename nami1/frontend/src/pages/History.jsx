@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { getMyChats } from "../services/historyService";
+import { auth } from "../services/firebase";
+import { useNavigate } from "react-router-dom";
 export default function History() {
   const [history, setHistory] = useState([]);
+const navigate = useNavigate();
+
+useEffect(() => {
+  if (!auth.currentUser) {
+    navigate("/login");
+  }
+}, []);
 
 useEffect(() => {
 

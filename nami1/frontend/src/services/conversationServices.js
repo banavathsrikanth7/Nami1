@@ -3,8 +3,12 @@ import { auth } from "./firebase";
 export const createConversation =
 async () => {
 
-  const token =
-    await auth.currentUser.getIdToken();
+ if (!auth.currentUser) {
+  throw new Error("User not logged in");
+}
+
+const token =
+await auth.currentUser.getIdToken();
 const API_URL = import.meta.env.VITE_API_URL;
   const response =
     await fetch(
