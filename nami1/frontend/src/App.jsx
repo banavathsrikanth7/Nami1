@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import History from "./pages/History";
 import LoginSignup from "./pages/LoginSignup";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import { Navigate } from "react-router-dom";
 function App() {
   const [showHome, setShowHome] = useState(false);
   const videoRef = useRef(null);
@@ -56,9 +56,27 @@ function App() {
             <Navbar />
             <div className="flex-grow pt-20 px-4">
               <Routes>
-                <Route path="/login" element={<LoginSignup />} />
-                <Route path="/" element= {<ProtectedRoute><HomePage /> </ProtectedRoute>} />
-                <Route path="/history" element={<ProtectedRoute><History /> </ProtectedRoute>} />
+                <Route path="/" element={<Navigate to="/login" />} />
+
+<Route path="/login" element={<LoginSignup />} />
+
+<Route
+  path="/chat"
+  element={
+    <ProtectedRoute>
+      <HomePage />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/history"
+  element={
+    <ProtectedRoute>
+      <History />
+    </ProtectedRoute>
+  }
+/>
                 
               </Routes>
             </div>

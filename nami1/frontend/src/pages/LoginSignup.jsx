@@ -46,7 +46,7 @@ const navigate = useNavigate();
 
   console.log(data);
 
-  navigate("/");
+  navigate("/chat");
 } else {
         const result = await signUp(
   email,
@@ -66,7 +66,7 @@ await fetch(
   }
 );
 
-navigate("/");
+navigate("/chat");
       }
     } catch (err) {
       alert("❌ " + err.message);
@@ -102,7 +102,7 @@ navigate("/");
 
     console.log(data);
 
-   navigate("/");
+   navigate("/chat");
 
   } catch (err) {
     alert("❌ " + err.message);
